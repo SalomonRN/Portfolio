@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+import Card from "@/components/Card.astro";
+
+
+const projects = await getCollection("projects");
+
+console.log(projects[0].data.title);
+console.log(typeof projects[0].data);
+---
+
+
+<section class="flex flex-col align-middle items-center">
+  <h1 class="text-3xl">MIS PROYECTOS</h1>
+
+
+</section>
