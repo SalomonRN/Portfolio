@@ -1,0 +1,32 @@
+---
+import fs from "node:fs";
+let PATH = "./public/svgs/tech";
+const files = fs.readdirSync(PATH);
+// 22:56:36 [WARN] [vite] Files in the public directory are served at the root path.
+PATH = PATH.replace("./public", "");
+---
+
+{
+  files.map((f) => {
+    const techonology_name = f.split(".")[0];
+    return (
+      <img
+        class="hover:scale-105"
+        src={`${PATH}/${f}`}
+        alt={`${techonology_name} Logo`}
+        title={techonology_name}
+      />
+    );
+  })
+}
+
+<style>
+  img {
+    width: 100px;
+    height: auto;
+    object-fit: cover;
+    flex-shrink: 0;
+    border-radius: 10px;
+    margin-right: 10px;
+  }
+</style>

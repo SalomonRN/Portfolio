@@ -1,0 +1,43 @@
+---
+import TechImages from "./TechImages.astro";
+---
+
+<div class="max-w-[1000px] overflow-hidden relative">
+  <div id="carousel-track" class="flex">
+    <TechImages />
+    <TechImages />
+  </div>
+</div>
+
+<style>
+  #carousel-track {
+    width: calc(300px * 14); /* 10 imágenes (5 originales + 5 duplicadas) */
+    animation: carousel 20s linear infinite;
+  }
+
+  @keyframes carousel {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-44.5%);
+      /* transform: translateX(-72.5%); */
+    }
+  }
+</style>
+
+<script>
+  const carousel = document.getElementById("carousel-track");
+
+  carousel?.addEventListener("mouseenter", () => {
+    if (carousel) {
+      carousel.style.animationPlayState = "paused";
+    }
+  });
+
+  carousel?.addEventListener("mouseleave", () => {
+    if (carousel) {
+      carousel.style.animationPlayState = "running";
+    }
+  });
+</script>

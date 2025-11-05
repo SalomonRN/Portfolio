@@ -1,0 +1,14 @@
+---
+interface Props {
+  title: string;
+  content: string;
+  styles: string;
+}
+const { title, content, styles } = Astro.props;
+---
+
+<!-- TODO: COLOCAR UN BORDE A CADA UNO DE TRON COMO SI FUERA UNA ESTELA, CUANDO HAGA HOVER? -->
+<div class=`${styles}`>
+  <h2 class="text-center text-3xl m-5 mb-5">{title}</h2>
+  <p class="text-lg mx-5 md:mx-20 mb-10" set:html={content} />
+</div>
