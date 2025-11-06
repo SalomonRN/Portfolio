@@ -1,0 +1,50 @@
+---
+const isHome = Astro.url.pathname === "/";
+---
+
+<header class=`${isHome && "main-header"} fixed w-screen h-30 z-10 backdrop-blur-sm top-0 px-8 lg:px-0`>
+  <div class="flex flex-cols max-w-7xl mx-auto items-center justify-between">
+    <a href="/" class="col-span-2">
+      <img src="" width="50" alt="Mi imagen." />
+    </a>
+    <div class="flex fle-row mt-10 mx-10 gap-5 max-lg:pl-30 max-lg:pb-20 ">
+      <a class="group flex w-7 h-auto" href="https://github.com/SalomonRN/">
+        <img
+          class="w-auto h-auto group-hover:scale-115"
+          src="/svgs/github.svg"
+          alt="GitHub Logo"
+          title="GitHub"
+        />
+      </a>
+      <a class="group flex w-8 h-auto" href="https://www.linkedin.com/in/salomonrn/">
+        <img
+          class="w-auto h-auto group-hover:scale-115"
+          src="/svgs/linkedin.svg"
+          alt="Linkedin Logo"
+          title="Linkedin"
+        />
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .main-header {
+    animation: header-scroll 0.5s ease-in-out;
+    animation-timeline: scroll();
+    animation-range: 0px 700px;
+  }
+  @keyframes header-scroll {
+    0% {
+      opacity: 0%;
+      background: transparent;
+    }
+    70% {
+      opacity: 10%;
+    }
+    100% {
+      opacity: 100%;
+      border-bottom: black solid;
+    }
+  }
+</style>

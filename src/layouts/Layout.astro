@@ -1,6 +1,7 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import "@/styles/global.css";
+import Header from "@/sections/Header.astro";
 
 interface Props {
   title: string;
@@ -22,6 +23,8 @@ const { title } = Astro.props;
   <body
     class="relative h-full bg-slate-950 [&>div]:absolute [&>div]:bottom-0 [&>div]:left-[-20%] [&>div]:right-0 [&>div]:top-[-10%] [&>div]:h-[500px] [&>div]:w-[500px] [&>div]:rounded-full [&>div]:bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"
   >
+    <Header></Header>
+
     <slot />
   </body>
 </html>
