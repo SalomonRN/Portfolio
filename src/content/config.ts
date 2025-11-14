@@ -10,7 +10,8 @@ const projectsCollection = defineCollection({
     gallery: z.array(z.object({file: z.string(), widht: z.string(), height: z.string()})), //Media para la galeria
     video: z.string().optional(), // Video representativo del proyecto
     github: z.string(), // Url al repositorio en github
-    url: z.string().optional() // Link directo para visualizar el proyecto si es Web
+    url: z.string().optional(), // Link directo para visualizar el proyecto si es Web
+    url_back: z.string().optional() // Link directo del backend del proyecto
   }),
 });
 

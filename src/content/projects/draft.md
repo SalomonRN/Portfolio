@@ -1,12 +1,17 @@
 ---
 title: draft
 description: draft
-technologies: []
+technologies:
+  [
+    { name: "draft", usage: "draft", img: "draft" },
+    { name: "draft", usage: "draft", img: "draft" },
+  ]
 img: draft
-video: draft
+video: draft Optional
 github: draft
 challanges: Draft
-url: draft
+url: draft Optional
+url_back: draft Optional
 gallery:
   [
     { "file": "/imgs/projects/--------/hero.png", widht: "", height: "" },
