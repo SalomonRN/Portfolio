@@ -16,16 +16,13 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <meta name=description content="Salomón Ruiz Navarrete - Portfolio">
+    <meta name="description" content="Salomón Ruiz Navarrete - Portfolio" />
     <title>{title}</title>
-    <ClientRouter />
+    <!-- <ClientRouter /> -->
   </head>
-  <body
-    class="relative h-full bg-slate-950 [&>div]:absolute [&>div]:bottom-0 [&>div]:left-[-20%] [&>div]:right-0 [&>div]:top-[-10%] [&>div]:h-[500px] [&>div]:w-[500px] [&>div]:rounded-full [&>div]:bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"
-  >
-    <Header></Header>
-
-    <slot />
+  <body class="min-h-screen bg-linear-to-br from-gray-900 via-slate-950 to-[#150431] text-white">
+    <Header />
+    <slot /> 
   </body>
 </html>
 
@@ -36,7 +33,5 @@ const { title } = Astro.props;
     color: #f9fdfc;
     font-family: monospace;
     margin: 0;
-    width: 100%;
-    height: 100%;
   }
 </style>
