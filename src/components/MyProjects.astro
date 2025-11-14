@@ -1,11 +1,10 @@
 ---
 import { getCollection } from "astro:content";
-import CardProject from "@/components/CardProject.astro";
+import CardProject from "@/sections/CardProject.astro";
 
 const projects = await getCollection("projects");
 ---
 
-<!-- <section class=" flex-col align-middle items-center"> -->
 <section class="flex flex-col lign-middle items-center">
   <h1 class="col-span-4 text-3xl">MIS PROYECTOS</h1>
   <section class="grid grid-cols-3 p-20 gap-15">
@@ -18,3 +17,4 @@ const projects = await getCollection("projects");
     }
   </section>
 </section>
+<script src="/js/vanilla-tilt.js" astro:page-load></script>
