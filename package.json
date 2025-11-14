@@ -13,6 +13,8 @@
     "@midudev/tailwind-animations": "^0.2.0",
     "@tailwindcss/vite": "^4.1.16",
     "astro": "^5.12.9",
-    "tailwindcss": "^4.1.16"
+    "photoswipe": "^5.4.4",
+    "tailwindcss": "^4.1.16",
+    "vanilla-tilt": "^1.8.1"
   }
 }
