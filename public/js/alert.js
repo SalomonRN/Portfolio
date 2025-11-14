@@ -1,4 +1,4 @@
-import Swal from "sweetalert2";
+import Swal from "https://cdn.jsdelivr.net/npm/sweetalert2@11/+esm";
 const alertaProyecto = (url) => {
   if (!url) return
   fetch(url) // Awake server
