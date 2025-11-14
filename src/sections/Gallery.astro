@@ -1,0 +1,40 @@
+---
+import type { Project } from '@/content/config';
+
+interface Props {
+    project: Project
+}
+const {project} = Astro.props
+
+---
+<section id="gallery" class="flex-col hidden w-full min-h-[400px]">
+  <h2 class="text-4xl text-center my-10">GALERIA</h2>
+  <div
+    id="galery"
+    class="grid grid-cols-1 lg:grid-cols-3 justify-between items-center align-middle gap-25 lg:mx-50 mb-25"
+  > 
+    {
+
+      project.data.gallery.map((media) => {
+        
+        return (
+          <a
+            class="rounded-xl hover:scale-105 hover:contrast-110 transition-all relative"
+            href={media.file}
+            target="_blank"
+            data-cropped="true"
+            data-pswp-width={parseInt(media.widht)}
+            data-pswp-height={parseInt(media.height)}
+          >
+            <img
+              class="object-cover rounded-3xl"
+              width="500"
+              height="350"
+              src={media.file}
+            />
+          </a>
+        );
+      })
+    }
+  </div>
+</section>

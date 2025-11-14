@@ -1,8 +1,27 @@
 ---
-import type { GetStaticPaths } from "astro";
+import Project from "@/components/Project.astro";
+import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
 
-export const getStaticPaths = (() => {
-    
-    return [];
-}) satisfies GetStaticPaths;
+export const getStaticPaths = async () => {
+  const projects = await getCollection("projects");
+  return projects.map((p) => {
+    return { params: { id: p.data.title.replaceAll(/\s/g, "") } };
+  });
+};
+const { id } = Astro.params;
+
+const projects = await getCollection("projects", ({ data }) => {
+  return data.title.replaceAll(" ", "") === id;
+});
+
+const project = projects.find((p) => p.data.title.replaceAll(/\s/g, "") === id);
+
+if (!project) {
+  return;
+}
 ---
+
+<Layout title={project.data.title}>
+  <Project project={project} />
+</Layout>

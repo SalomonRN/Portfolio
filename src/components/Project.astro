@@ -1,0 +1,137 @@
+---
+import { type Project } from "@/content/config";
+import Challange from "@/sections/Challange.astro";
+import Gallery from "@/sections/Gallery.astro";
+import Techs from "@/sections/Techs.astro";
+
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+// project.data.img = `https://picsum.photos/500/350?random=${Math.random()}`;
+
+const gridCol =
+  project.data.technologies.length / 3 === 1 ? "grid-cols-3" : "grid-cols-4";
+
+// COLOCAR LA HERO IMAGE AL MD Y AL COLLECTION
+// DEBO COLOCAR MUY VISIBLE EL github Y LA url
+---
+
+<main class="flex flex-col items-center justify-between mt-20">
+  <h1 class="text-4xl mt-20">{project.data.title}</h1>
+  <section class="flex flex-col lg:flex-row items-center my-10 mx-15">
+    <p class="text-lg my-20 mr-20 w-4/6">
+      {project.data.description}
+    </p>
+    <picture class="h-">
+      {
+        project.data.video ? (
+          <video
+            class="w-[500px] h-[350px] object-fill"
+            src={project.data.video}
+            title="Video principal del proyecto"
+            muted
+            loop
+          />
+        ) : (
+          <img
+            class="w-[500px] h-[350px] object-fill"
+            width="500"
+            height="350"
+            src={project.data.img}
+            alt="Imagen principal del proyecto"
+            title="Imagen principal del proyecto"
+          />
+        )
+      }
+    </picture>
+  </section>
+  <section class="flex flex-row w-full justify-center gap-2 md:gap-20 mt-10">
+    <h2
+      id="techTitle"
+      class="text-4xl hover:underline cursor-pointer transition-all"
+    >
+      TECNOLOGIAS
+    </h2>
+    <h2
+      id="challangeTitle"
+      class="text-4xl hover:underline cursor-pointer transition-all"
+    >
+      RETOS
+    </h2>
+    <h2
+      id="galleryTitle"
+      class="text-4xl hover:underline cursor-pointer transition-all"
+    >
+      GALERIA
+    </h2>
+  </section>
+
+  <Techs project={project} />
+  <Challange project={project} />
+  <Gallery project={project} />
+</main>
+
+<script src="/js/vanilla-tilt.js" astro:page-load></script>
+
+<script>
+  const initLightbox = async () => {
+    // dynamic import — allowed inside functions
+    await import("photoswipe/style.css"); // bundler must support CSS imports; otherwise load via <link>
+    const pswpModule =
+      (await import("photoswipe")).default || (await import("photoswipe"));
+    const PhotoSwipeLightbox = (await import("photoswipe/lightbox")).default;
+
+    const lightbox = new PhotoSwipeLightbox({
+      pswpModule,
+      children: "a",
+      gallery: "#gallery",
+    });
+    lightbox.init();
+  };
+
+  const initSection = () => {
+    const techSection = document?.getElementById("techs");
+    const challangeSection = document?.getElementById("challange");
+    const gallerySection = document?.getElementById("gallery");
+    let currentSection = techSection;
+
+    const techTitle = document?.getElementById("techTitle");
+    const challangeTitle = document?.getElementById("challangeTitle");
+    const galleryTitle = document?.getElementById("galleryTitle");
+
+    function changeSection(newSection: any) {
+      if (!currentSection || !newSection) return;
+
+      currentSection.style.display = "none";
+      newSection.style.display = "flex";
+      currentSection = newSection;
+    }
+
+    techTitle?.addEventListener("click", () => {
+      changeSection(techSection);
+    });
+    challangeTitle?.addEventListener("click", () => {
+      changeSection(challangeSection);
+    });
+    galleryTitle?.addEventListener("click", () => {
+      changeSection(gallerySection);
+    });
+
+    techTitle?.addEventListener("mouseenter", () => {
+      changeSection(techSection);
+    });
+    challangeTitle?.addEventListener("mouseenter", () => {
+      changeSection(challangeSection);
+    });
+    galleryTitle?.addEventListener("mouseenter", () => {
+      changeSection(gallerySection);
+    });
+  };
+
+  function initPlugins() {
+    initSection();
+    initLightbox();
+  }
+  initPlugins();
+</script>

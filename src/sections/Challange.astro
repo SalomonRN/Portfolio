@@ -1,0 +1,20 @@
+---
+import type { Project } from "@/content/config";
+
+interface Props {
+  project: Project;
+}
+const { project } = Astro.props;
+---
+
+<section
+  id="challange"
+  class="flex-col hidden w-full min-h-[400px] items-center"
+>
+  <h2 id="challenge" class="text-4xl text-center mt-10">
+    RETOS QUE TUVE AL MOMENTO
+  </h2>
+  <p class="text-sm lg:text-lg mt-10 w-auto lg:max-w-2xl mx-20">
+    {project.data.challanges}
+  </p>
+</section>

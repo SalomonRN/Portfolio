@@ -1,0 +1,28 @@
+---
+import type { Project } from '@/content/config'
+
+interface Props {
+    project: Project
+}
+const {project} = Astro.props
+---
+
+  <section id="techs" class="flex flex-col min-h-[400px]">
+    <h2 class="text-4xl text-center mt-10">PRINCIPALES TECNOLOGIAS USADAS</h2>
+    <div class=`grid grid-cols-3 gap-15 place-items-center p-15 mt-15`>
+      {
+        project.data.technologies.map((tech) => {
+          return (
+            <div class="tilt-element" data-tilt data-tilt-reverse="true">
+              <img
+                class="col-span-full md:col-span-1 w-50 rounded-2xl"
+                src={tech.img}
+                alt={`Imagen representativa de ${tech.name}`}
+                title={tech.usage}
+              />
+            </div>
+          );
+        })
+      }
+    </div>
+  </section>
