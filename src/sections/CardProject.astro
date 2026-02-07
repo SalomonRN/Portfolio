@@ -9,19 +9,19 @@ const { project } = Astro.props;
 
 ---
 
-<div class="col-span-3 lg:col-span-1 rounded-xl bg-red-950 p-4" data-tilt data-tilt-reverse="true" data-tilt-max="02">
+<div class="col-span-3 lg:col-span-1 rounded-xl bg-[#0a0e29] p-4" data-tilt data-tilt-reverse="true" data-tilt-max="02">
   <picture class="flex flex-col align-middle items-center justify-center m-5 h-[250px]">
-    <img class="rounded-lg w-5/6  max-h-full object-cover object-top" src={project.data.img} alt="" />
+    <img class="rounded-4xl max-h-full object-contain object-top" src={project.data.img} alt="" />
   </picture>
   <a href=`project/${project.data.title.replaceAll(" ", "")}`> 
     <h3 class="text-center m-5 mt-10 text-3xl truncate">{project.data.title}</h3>
   </a>
-  <p class="text-lg m-5 min-h-[250px] text-ellipsis">
+  <p class="text-lg m-5 min-h-[250px] text-ellipsis text-sky-200 text-shadow-2xs text-shadow-sky-300">
     {project.data.description}
   </p>
   <div class="flex flex-wrap ">
     {project.data.technologies.map((tech) => {
-      return <h4 class="mx-2 col-span-1 bg-violet-950 rounded-2xl p-2 mb-2">{tech.name}</h4>
+      return <h4 class="text-black bg-linear-to-br from-[#00d2ff] to-[#008fb3] mx-2 col-span-1 rounded-2xl p-2 mb-2">{tech.name}</h4>
     })}
   </div>
 </div>
